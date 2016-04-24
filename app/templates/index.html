@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% if title == none %}
-        <title>{{title}} - microblog</title>
-        {% else %}
-        <title>Welcome - microblog</title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>Hello, {{user.nickname}}!</h1>
-        {% for item in fruitlist %}
-        <h2>{{ item.name }} is {{ item.color }}</h2>
-        {% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hello World!</h1>
+{% endblock %}
