@@ -1,8 +1,10 @@
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask.ext.login import UserMixin
+from app import login_manager
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     nickname = db.Column(db.String(64), unique=True)
@@ -34,3 +36,8 @@ class Post(db.Model):
 
     def __repr__(self):
         print(self.body)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))

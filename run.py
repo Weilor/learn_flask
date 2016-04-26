@@ -4,6 +4,6 @@ from app import MigrateCommand
 
 manager = Manager(app)
 if __name__ == "__main__":
-    manager.add_command('db', MigrateCommand)
-    manager.run()
-    #app.run(debug=True)
+    #manager.add_command('db', MigrateCommand)
+    #manager.run()
+    app.run(debug=True)
