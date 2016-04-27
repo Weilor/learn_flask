@@ -7,7 +7,7 @@ from app import login_manager
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    nickname = db.Column(db.String(64), unique=True)
+    username = db.Column(db.String(64), unique=True)
     email = db.Column(db.String(120), unique=True)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     password_hash = db.Column(db.String(128))
@@ -24,7 +24,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        print(self.nickname)
+        print(self.username)
 
 
 class Post(db.Model):
