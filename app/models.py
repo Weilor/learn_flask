@@ -38,6 +38,15 @@ class Post(db.Model):
         print(self.body)
 
 
+class Role(db.Model):
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    
+    def __repr__(self):
+        print(self.name)
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
