@@ -3,6 +3,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.login import LoginManager
 from flask.ext.bootstrap import Bootstrap
+from flask.ext.mail import Mail
+import os
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -10,6 +12,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager()
 bootstrap = Bootstrap(app)
+mail = Mail(app)
 from app import views, models
 from .auth import auth as auth_blueprint
 
